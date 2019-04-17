@@ -46,9 +46,9 @@ CREATE TABLE Profile (
 
 CREATE TABLE Contributions (
    userId int PRIMARY KEY,
-   preTax int DEFAULT 2,
-   afterTax int DEFAULT 2,
-   roth int DEFAULT 2,
+   preTax int DEFAULT 5,
+   afterTax int DEFAULT 5,
+   roth int DEFAULT 5,
 
    FOREIGN KEY (userId) REFERENCES User(userId)
 );
