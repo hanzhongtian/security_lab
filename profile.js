@@ -97,11 +97,10 @@ function handleProfileUpdate1(req,res,next,err,data)
    var bankAcc = req.body.bankAcc;
    var bankRouting = req.body.bankRouting;
 
-   var q = "UPDATE Profile SET ssn = '" + ssn + "', dob = '" + dob + "', address = '" +
-      address + "', bankAcc = '" + bankAcc + "', bankRouting = '" + bankRouting + "'" +
-      " WHERE userId = " + req.session.userId;
+   var q = "UPDATE Profile SET ssn = ?, dob = ?, address = ?, bankAcc = ?, bankRouting = ? WHERE userId = ?;
 
-   db.query(q,function(e1,d1) { handleProfileUpdate2(req,res,next,e1,d1); } );
+   db.query(q, [ssn, dob, address, bankAcc, bankRouting, req.session.userId], 
+            function(e1,d1) { handleProfileUpdate2(req,res,next,e1,d1); } );
 }
 
 
